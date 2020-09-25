@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		097419CB251DCC2400399AA1 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 097419CA251DCC2400399AA1 /* opencv2.framework */; };
 		09A5295E2450831600D34620 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A5295D2450831600D34620 /* AppDelegate.swift */; };
 		09A529602450831600D34620 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 09A5295F2450831600D34620 /* GameScene.sks */; };
 		09A529622450831600D34620 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 09A529612450831600D34620 /* Actions.sks */; };
@@ -15,9 +16,24 @@
 		09A529692450831600D34620 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09A529672450831600D34620 /* Main.storyboard */; };
 		09A5296B2450831700D34620 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09A5296A2450831700D34620 /* Assets.xcassets */; };
 		09A5296E2450831700D34620 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09A5296C2450831700D34620 /* LaunchScreen.storyboard */; };
+		09B57256251DA6D4006EDA4A /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 09B57255251DA6CA006EDA4A /* libc++.tbd */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		097419C9251DCAD300399AA1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		097419CA251DCC2400399AA1 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		09A5295A2450831600D34620 /* flipper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = flipper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09A5295D2450831600D34620 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09A5295F2450831600D34620 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -28,6 +44,7 @@
 		09A5296A2450831700D34620 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09A5296D2450831700D34620 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09A5296F2450831700D34620 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		09B57255251DA6CA006EDA4A /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +52,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				097419CB251DCC2400399AA1 /* opencv2.framework in Frameworks */,
+				09B57256251DA6D4006EDA4A /* libc++.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +65,7 @@
 			children = (
 				09A5295C2450831600D34620 /* flipper */,
 				09A5295B2450831600D34620 /* Products */,
+				09B57250251DA685006EDA4A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,6 +93,15 @@
 			path = flipper;
 			sourceTree = "<group>";
 		};
+		09B57250251DA685006EDA4A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				09B57255251DA6CA006EDA4A /* libc++.tbd */,
+				097419CA251DCC2400399AA1 /* opencv2.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -83,6 +112,7 @@
 				09A529562450831600D34620 /* Sources */,
 				09A529572450831600D34620 /* Frameworks */,
 				09A529582450831600D34620 /* Resources */,
+				097419C9251DCAD300399AA1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -293,13 +323,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KV543JV76H;
+				DEVELOPMENT_TEAM = L248HZDU6R;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = flipper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ohayoukenchan.-flipper.flipper";
+				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ohayoukenchan.flipper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -311,13 +346,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KV543JV76H;
+				DEVELOPMENT_TEAM = L248HZDU6R;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = flipper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ohayoukenchan.-flipper.flipper";
+				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ohayoukenchan.flipper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

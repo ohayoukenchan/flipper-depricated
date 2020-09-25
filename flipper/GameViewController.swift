@@ -10,10 +10,20 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
+import opencv2
+
 class GameViewController: UIViewController {
+
+    @IBOutlet weak var srcImageView: UIImageView!
+    @IBOutlet weak var dstImageView: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let image = UIImage(named: "nino")!
+
+        self.srcImageView.image = image
+        self.dstImageView.image = self.convertColor(source: image)
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
@@ -46,5 +56,12 @@ class GameViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+
+    func convertColor(source srcImage: UIImage) -> UIImage {
+        let srcMat = Mat(uiImage: srcImage)
+        let dstMat = Mat()
+        Imgproc.cvtColor(src: srcMat, dst: dstMat, code: .COLOR_RGB2GRAY)
+        return dstMat.toUIImage()
     }
 }
